@@ -1,5 +1,7 @@
 # SkillBridge SA — Professional Career Development Platform
 
+**Presentation**: [https://youtu.be/ZFwfM_NIgqw?si=xrvKGuqSIIpszSmM](https://youtu.be/ZFwfM_NIgqw?si=xrvKGuqSIIpszSmM)
+
 SkillBridge SA is a comprehensive Android application designed to bridge the gap between education and employment for South African youth. It provides a tailored experience for students, graduates, mentors, and employers through a professional, Figma-style interface.
 
 ## 🚀 Tech Stack & Backend (API)
