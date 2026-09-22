@@ -1,0 +1,53 @@
+# Android/Kotlin Project Git Ignore - SkillBridge SA
+
+# Built artifacts
+bin/
+gen/
+out/
+/build
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration files (SENSITIVE - containing local paths and sometimes API keys)
+local.properties
+
+# Firebase Configuration (SENSITIVE - contains project IDs and API keys)
+# It is recommended to ignore the real config and share a placeholder
+app/google-services.json
+
+# Signing files (CRITICAL SENSITIVE DATA)
+*.jks
+*.keystore
+*.p12
+*.key
+*.pem
+google-services.json
+
+# IDE files
+.idea/
+*.iml
+.navigation/
+captures/
+.externalNativeBuild
+.cxx/
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Package management
+node_modules/
+
+# Secrets and environment variables
+.env
+secrets.xml

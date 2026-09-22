@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SkillBridge SA</string>
+    <string name="tagline">Kusukela Emakhonweni Kuya Kumathuba. Kusukela Emfundweni Kuya Emsebenzini</string>
+
+    <string name="welcome_back">Siyakwamukela Futhi</string>
+    <string name="sign_in_subtitle">Ngena ku-akhawunti yakho ye-SkillBridge SA.</string>
+    <string name="email_address">Ikheli le-imeyili</string>
+    <string name="password">Iphasiwedi</string>
+    <string name="login">Ngena</string>
+    <string name="or_continue_with">Noma qhubeka nge</string>
+    <string name="continue_with_google">Qhubeka nge-Google</string>
+    <string name="no_account">Awunayo i-akhawunti?</string>
+    <string name="create_account">Yakha i-Akhawunti</string>
+    <string name="forgot_password">Ukhohlwe iphasiwedi?</string>
+    <string name="remember_me">Ngikhumbule</string>
+
+    <string name="create_an_account">Yakha i-Akhawunti</string>
+    <string name="join_network">Joyina uxhumano lwezokusebenza lwaseNingizimu Afrika.</string>
+    <string name="i_am_a">Ngingu:</string>
+    <string name="role_student">Umfundi</string>
+    <string name="role_graduate">Osephothule</string>
+    <string name="role_mentor">Umeluleki</string>
+    <string name="role_employer">Umqashi</string>
+    <string name="role_admin">Umlawuli</string>
+    <string name="full_name">Igama eligcwele</string>
+    <string name="phone_number">Inombolo yocingo</string>
+    <string name="confirm_password">Qinisekisa iphasiwedi</string>
+    <string name="register_account">Bhalisa i-Akhawunti</string>
+    <string name="already_have_account">Usunayo i-akhawunti? Ngena</string>
+
+    <string name="home">Ikhaya</string>
+    <string name="explore">Hlola</string>
+    <string name="messages">Imilayezo</string>
+    <string name="notifications">Izaziso</string>
+    <string name="profile">Iphrofayela</string>
+
+    <string name="find_jobs">Thola Imisebenzi</string>
+    <string name="find_internships">Ukuqeqeshwa</string>
+    <string name="find_mentors">Thola Abeluleki</string>
+    <string name="learning_centre">Isikhungo Sokufunda</string>
+    <string name="my_applications">Izicelo Zami</string>
+    <string name="career_pathways">Izindlela Zomsebenzi</string>
+    <string name="mentorship">Ukwelulekwa</string>
+
+    <string name="settings">Izilungiselelo</string>
+    <string name="language">Ulimi</string>
+    <string name="notification_preferences">Okuncanyelwa Kwezaziso</string>
+    <string name="privacy_settings">Izilungiselelo Zobumfihlo</string>
+    <string name="logout">Phuma</string>
+
+    <string name="apply_now">Faka Isicelo Manje</string>
+    <string name="applied">Kufakwe isicelo ✓</string>
+    <string name="save_for_later">Londoloza</string>
+    <string name="saved">Londoloziwe ✓</string>
+    <string name="message_employer">Thumela umlayezo kumqashi</string>
+    <string name="send_message">Thumela umlayezo</string>
+    <string name="request_mentorship">Cela ukwelulekwa</string>
+    <string name="mentorship_requested">Kuceliwe ukwelulekwa</string>
+    <string name="accept">Yamukela</string>
+    <string name="decline">Nqaba</string>
+    <string name="view_job">Buka Umsebenzi</string>
+
+    <string name="error_invalid_email">Sicela ufake ikheli le-imeyili elivumelekile</string>
+    <string name="error_password_empty">Sicela ufake iphasiwedi yakho</string>
+    <string name="error_password_strength">Iphasiwedi kumele ibe nezinhlamvu ezinkulu, ezincane, izinombolo, nezimpawu ezikhethekile.</string>
+    <string name="error_passwords_dont_match">Amaphasiwedi awafani.</string>
+    <string name="error_terms">Sicela uvume kwiMigomo Yesevisi.</string>
+
+    <string name="free_access_banner">Ukufinyelela Kwamahhala Kubo Bonke – Ayikho Inkokhelo.</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sb_navy_dark">#0B2942</color>
+    <color name="sb_navy">#0F3D5F</color>
+    <color name="sb_green">#0E7A4C</color>
+    <color name="sb_green_dark">#095C39</color>
+    <color name="sb_green_light">#E7F6EE</color>
+    <color name="sb_gold">#F2A93B</color>
+    <color name="sb_white">#FFFFFF</color>
+    <color name="sb_bg">#F7FAF8</color>
+    <color name="sb_text_primary">#122A24</color>
+    <color name="sb_text_secondary">#5E7269</color>
+    <color name="sb_error">#D64545</color>
+    <color name="sb_purple_mentor">#6B4FA0</color>
+    <color name="sb_blue_graduate">#1D6FB8</color>
+
+    <!-- Professional Neutrals for Figma Design -->
+    <color name="sb_surface">#FFFFFF</color>
+    <color name="sb_outline">#E0E5E2</color>
+    <color name="sb_divider">#F0F2F1</color>
+    <color name="sb_neutral_light">#F9FBFA</color>
+    <color name="sb_shadow">#0D000000</color>
+</resources>

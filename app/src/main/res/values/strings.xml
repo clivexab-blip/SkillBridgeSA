@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SkillBridge SA</string>
+    <string name="tagline">From Skills to Opportunities. From Education to Employment</string>
+
+    <string name="onboard_title_1">Learn from the Best</string>
+    <string name="onboard_body_1">Connect with industry leaders and mentors tailored to your career goals.</string>
+    <string name="onboard_title_2">Find Real Opportunities</string>
+    <string name="onboard_body_2">Search jobs, internships and graduate programmes made for you.</string>
+    <string name="onboard_title_3">Grow Your Skills</string>
+    <string name="onboard_body_3">Track your progress and close the gap between you and your dream career.</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+
+    <string name="welcome_back">Welcome Back</string>
+    <string name="sign_in_subtitle">Sign in to your SkillBridge SA account.</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="or_continue_with">Or continue with</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="create_account">Create Account</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="remember_me">Remember me</string>
+
+    <string name="create_an_account">Create an Account</string>
+    <string name="join_network">Join South Africa\'s professional network.</string>
+    <string name="i_am_a">I am a:</string>
+    <string name="role_student">Student</string>
+    <string name="role_graduate">Graduate</string>
+    <string name="role_mentor">Mentor</string>
+    <string name="role_employer">Employer</string>
+    <string name="role_admin">Admin</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_account">Register Account</string>
+    <string name="already_have_account">Already have an account? Login</string>
+
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="messages">Messages</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+
+    <string name="find_jobs">Find Jobs</string>
+    <string name="find_internships">Internships</string>
+    <string name="find_mentors">Find Mentors</string>
+    <string name="learning_centre">Learning Centre</string>
+    <string name="my_applications">My Applications</string>
+    <string name="career_pathways">Career Pathways</string>
+    <string name="mentorship">Mentorship</string>
+
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="notification_preferences">Notification Preferences</string>
+    <string name="privacy_settings">Privacy Settings</string>
+    <string name="logout">Logout</string>
+
+    <string name="apply_now">Apply Now</string>
+    <string name="applied">Applied ✓</string>
+    <string name="save_for_later">Save for Later</string>
+    <string name="saved">Saved ✓</string>
+    <string name="message_employer">Message Employer</string>
+    <string name="send_message">Send Message</string>
+    <string name="request_mentorship">Request Mentorship</string>
+    <string name="mentorship_requested">Mentorship Requested</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="view_job">View Job</string>
+
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_password_empty">Please enter your password</string>
+    <string name="error_password_strength">Password must include uppercase, lowercase, numbers, and special characters.</string>
+    <string name="error_passwords_dont_match">Passwords do not match.</string>
+    <string name="error_terms">Please agree to the Terms of Service.</string>
+
+    <string name="free_access_banner">100% Free Access For Everyone – No Payments. No Subscriptions.</string>
+    <string name="default_web_client_id">153929003258-aspijjer7jf0h0k41o37kcv3ulsvqji3.apps.googleusercontent.com</string>
+</resources>
