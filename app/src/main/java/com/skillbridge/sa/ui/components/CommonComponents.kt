@@ -10,16 +10,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Explore
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.MailOutline
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,15 +20,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.skillbridge.sa.R
-import com.skillbridge.sa.ui.theme.Green
-import com.skillbridge.sa.ui.theme.GreenLight
-import com.skillbridge.sa.ui.theme.SbWhite
 
 @Composable
 fun SkillBridgeHeaderBanner(subtitle: String? = null) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_header_banner, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_header_banner, null, false).apply {
                 val tvSubtitle = findViewById<TextView>(R.id.tvHeaderSubtitle)
                 if (subtitle != null) {
                     tvSubtitle.text = subtitle
@@ -54,9 +41,9 @@ fun SkillBridgeHeaderBanner(subtitle: String? = null) {
 
 @Composable
 fun SbPrimaryButton(text: String, onClick: () -> Unit, enabled: Boolean = true, modifier: Modifier = Modifier) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_primary_button, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_primary_button, null, false).apply {
                 val btn = findViewById<Button>(R.id.btnPrimary)
                 btn.text = text
                 btn.isEnabled = enabled
@@ -76,9 +63,9 @@ fun SbTextField(
     isPassword: Boolean = false,
     singleLine: Boolean = true
 ) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_text_field, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_text_field, null, false).apply {
                 val til = findViewById<TextInputLayout>(R.id.textInputLayout)
                 val et = findViewById<TextInputEditText>(R.id.textInputEditText)
                 til.hint = label
@@ -102,10 +89,10 @@ fun SbTextField(
 }
 
 @Composable
-fun RoleBadge(label: String, background: Color = Green) {
-    AndroidView(
+fun RoleBadge(label: String, background: Color = Color(0xFF0E7A4C)) {
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_role_badge, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_role_badge, null, false).apply {
                 val tv = findViewById<TextView>(R.id.tvRoleBadge)
                 tv.text = label
                 tv.backgroundTintList = ColorStateList.valueOf(background.toArgb())
@@ -116,9 +103,9 @@ fun RoleBadge(label: String, background: Color = Green) {
 
 @Composable
 fun StatChip(value: String, label: String, modifier: Modifier = Modifier) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_stat_chip, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_stat_chip, null, false).apply {
                 findViewById<TextView>(R.id.tvStatValue).text = value
                 findViewById<TextView>(R.id.tvStatLabel).text = label
             }
@@ -129,9 +116,9 @@ fun StatChip(value: String, label: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun QuickActionCard(title: String, subtitle: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_quick_action_card, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_quick_action_card, null, false).apply {
                 findViewById<TextView>(R.id.tvActionTitle).text = title
                 findViewById<TextView>(R.id.tvActionSubtitle).text = subtitle
                 setOnClickListener { onClick() }
@@ -143,9 +130,9 @@ fun QuickActionCard(title: String, subtitle: String, onClick: () -> Unit, modifi
 
 @Composable
 fun GoldBanner(text: String) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_gold_banner, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_gold_banner, null, false).apply {
                 findViewById<TextView>(R.id.tvGoldBannerText).text = text
             }
         },
@@ -155,9 +142,9 @@ fun GoldBanner(text: String) {
 
 @Composable
 fun SectionHeader(title: String, onSeeAll: (() -> Unit)? = null) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_section_header, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_section_header, null, false).apply {
                 findViewById<TextView>(R.id.tvSectionTitle).text = title
                 val tvSeeAll = findViewById<TextView>(R.id.tvSeeAll)
                 if (onSeeAll != null) {
@@ -174,9 +161,9 @@ fun SectionHeader(title: String, onSeeAll: (() -> Unit)? = null) {
 
 @Composable
 fun SbBottomNavBar(currentRoute: String?, onNavigate: (String) -> Unit) {
-    AndroidView(
+    AndroidView<View>(
         factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.layout_bottom_nav, null).apply {
+            LayoutInflater.from(context).inflate(R.layout.layout_bottom_nav, null, false).apply {
                 val nav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
                 nav.setOnItemSelectedListener { item ->
                     val route = when (item.itemId) {

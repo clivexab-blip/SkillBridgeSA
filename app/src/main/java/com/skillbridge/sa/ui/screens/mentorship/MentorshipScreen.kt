@@ -156,6 +156,14 @@ class MentorshipView @JvmOverloads constructor(
                                     body = "${profile.fullName} accepted your mentorship request."
                                 )
                             )
+                            repo.notifications.insert(
+                                com.skillbridge.sa.data.model.AppNotification(
+                                    userId = profile.userId,
+                                    type = com.skillbridge.sa.data.model.NotificationType.MENTORSHIP,
+                                    title = "Mentorship Confirmed",
+                                    body = "You accepted the mentorship request."
+                                )
+                            )
                         }
                         Unit
                     }
@@ -188,6 +196,14 @@ class MentorshipView @JvmOverloads constructor(
                                 type = com.skillbridge.sa.data.model.NotificationType.MENTORSHIP,
                                 title = "New Mentorship Request",
                                 body = "${profile.fullName} requested your mentorship."
+                            )
+                        )
+                        repo.notifications.insert(
+                            com.skillbridge.sa.data.model.AppNotification(
+                                userId = profile.userId,
+                                type = com.skillbridge.sa.data.model.NotificationType.MENTORSHIP,
+                                title = "Mentorship Request Sent",
+                                body = "Your mentorship request has been sent."
                             )
                         )
                     }

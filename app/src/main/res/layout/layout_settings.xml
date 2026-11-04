@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sb_bg"
@@ -7,9 +8,10 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/tvHeaderSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textColor="@color/sb_navy"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -19,9 +21,66 @@
         android:layout_height="16dp" />
 
     <TextView
+        android:id="@+id/tvHeaderLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notification Preferences"
+        android:text="@string/language"
+        android:textColor="@color/sb_navy"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        app:cardBackgroundColor="@color/sb_white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/language"
+                android:textColor="@color/sb_navy"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCurrentLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English"
+                android:textColor="@color/sb_green"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:src="@android:drawable/ic_menu_more"
+                app:tint="@color/sb_green" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+    <TextView
+        android:id="@+id/tvHeaderNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notification_preferences"
         android:textColor="@color/sb_navy"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -49,9 +108,10 @@
         android:layout_height="20dp" />
 
     <TextView
+        android:id="@+id/tvHeaderPrivacy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Privacy Settings"
+        android:text="@string/privacy_settings"
         android:textColor="@color/sb_navy"
         android:textSize="18sp"
         android:textStyle="bold" />

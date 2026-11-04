@@ -288,7 +288,42 @@ class HomeDashboardView @JvmOverloads constructor(
                     card.findViewById<TextView>(R.id.tvUserName).text = "Application"
                     card.findViewById<TextView>(R.id.tvUserEmail).text = "Status: ${app.status.name.replace('_', ' ')}"
                     card.findViewById<View>(R.id.tvRoleBadge).visibility = View.GONE
+                    card.setOnClickListener { onOpenApplications() }
                     container.addView(card)
+                }
+            }
+        } else if (profile.role == UserRole.EMPLOYER || profile.role == UserRole.ADMIN) {
+            header.visibility = View.VISIBLE
+            header.findViewById<TextView>(R.id.tvSectionTitle).text = "Recent Candidate Submissions"
+            container.visibility = View.VISIBLE
+            container.removeAllViews()
+
+            if (apps.isEmpty()) {
+                val tv = TextView(context).apply {
+                    text = "No candidate applications received yet."
+                    setTextColor(context.getColor(R.color.sb_text_secondary))
+                    setPadding(0, 10, 0, 10)
+                }
+                container.addView(tv)
+            } else {
+                scope.launch {
+                    val users = withContext(Dispatchers.IO) { repo.users.getAll().associateBy { it.userId } }
+                    val opps = withContext(Dispatchers.IO) { repo.opportunities.getAll().associateBy { it.opportunityId } }
+                    withContext(Dispatchers.Main) {
+                        container.removeAllViews()
+                        apps.take(4).forEach { app ->
+                            val student = users[app.studentProfileId]
+                            val opp = opps[app.opportunityId]
+                            val card = LayoutInflater.from(context).inflate(R.layout.item_user, container, false)
+                            val name = student?.fullName ?: "Student Applicant"
+                            val role = student?.role?.name ?: "STUDENT"
+                            card.findViewById<TextView>(R.id.tvUserName).text = "$name ($role)"
+                            card.findViewById<TextView>(R.id.tvUserEmail).text = "Applied for: ${opp?.title ?: "Job"} • Status: ${app.status.name.replace('_', ' ')}"
+                            card.findViewById<View>(R.id.tvRoleBadge).visibility = View.GONE
+                            card.setOnClickListener { onOpenApplications() }
+                            container.addView(card)
+                        }
+                    }
                 }
             }
         } else {

@@ -3,6 +3,16 @@
     <string name="app_name">SkillBridge SA</string>
     <string name="tagline">Ukusuka Ezakhonweni Ukuya Kumathuba. Ukusuka Emfundweni Ukuya Emsebenzini</string>
 
+    <string name="onboard_title_1">Funda Kwiingcali Ezibalaseleyo</string>
+    <string name="onboard_body_1">Dibanisa neenkokeli zoshishino kunye nabacebisi abalungele iinjongo zakho zomsebenzi.</string>
+    <string name="onboard_title_2">Fumana Amathuba Okwenyani</string>
+    <string name="onboard_body_2">Khangela imisebenzi, ubuncedi kunye neenkqubo zabaphumeleleyo ezenzelwe wena.</string>
+    <string name="onboard_title_3">Khulisa Izakhono Zakho</string>
+    <string name="onboard_body_3">Landela inkqubela yakho uvale umsantsa phakathi kwakho nomsebenzi wakho wamaphupha.</string>
+    <string name="skip">Tsiba</string>
+    <string name="next">Okulandelayo</string>
+    <string name="get_started">Qalisa</string>
+
     <string name="welcome_back">Wamkelekile Kwakhona</string>
     <string name="sign_in_subtitle">Ngena kwi-akhawunti yakho ye-SkillBridge SA.</string>
     <string name="email_address">Idilesi ye-imeyile</string>
@@ -68,4 +78,14 @@
     <string name="error_terms">Nceda uvume kwiMigqaliselo yeNkonzo.</string>
 
     <string name="free_access_banner">Ufikelelo lwasimahla Kubo Bonke – Akukho Ntlawulo. Akukho Rhuliso.</string>
+    <string name="career_overview">Uhlaka Lomsebenzi</string>
+    <string name="mentorship_overview">Uhlaka Lokucetyiswa</string>
+    <string name="recruitment_overview">Uhlaka Lokuqasha</string>
+    <string name="platform_overview">Uhlaka Lweqonga</string>
+    <string name="quick_actions">Amanyathelo Akhawulezileyo</string>
+    <string name="recent_applications">Izicelo Zangoku</string>
+    <string name="recent_candidate_submissions">Izicelo Zabavi Zangoku</string>
+    <string name="received_applications">Izicelo Ezifunyenweyo</string>
+    <string name="candidates_found">Abavi Abafunyenweyo</string>
+    <string name="results_found">Iziphumo Ezifunyenweyo</string>
 </resources>

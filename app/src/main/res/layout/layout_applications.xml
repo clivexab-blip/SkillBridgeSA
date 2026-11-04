@@ -9,6 +9,7 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/tvHeaderTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Applications"
@@ -17,6 +18,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tvHeaderSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Track the status of every opportunity you've applied for."

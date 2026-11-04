@@ -3,7 +3,6 @@ package com.skillbridge.sa.ui.screens.auth
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +14,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -34,6 +34,13 @@ fun RegisterScreen(
 ) {
     val authState by viewModel.authState.collectAsState()
 
+    LaunchedEffect(authState) {
+        if (authState is AuthUiState.Success) {
+            onRegisterSuccess()
+            viewModel.resetAuthState()
+        }
+    }
+
     AndroidView(
         factory = { context ->
             RegisterView(context).apply {
@@ -50,11 +57,6 @@ fun RegisterScreen(
             view.updateState(authState)
         }
     )
-
-    if (authState is AuthUiState.Success) {
-        onRegisterSuccess()
-        viewModel.resetAuthState()
-    }
 }
 
 class RegisterView @JvmOverloads constructor(
@@ -72,7 +74,9 @@ class RegisterView @JvmOverloads constructor(
     private val cbTerms: CheckBox
     private val pbStrength: ProgressBar
     private val tvStrengthLabel: TextView
+    private val tilFullName: TextInputLayout
     private val tilEmail: TextInputLayout
+    private val tilPhone: TextInputLayout
     private val tilPassword: TextInputLayout
     private val tilConfirmPassword: TextInputLayout
 
@@ -90,17 +94,38 @@ class RegisterView @JvmOverloads constructor(
         cbTerms = findViewById(R.id.cbTerms)
         pbStrength = findViewById(R.id.pbStrength)
         tvStrengthLabel = findViewById(R.id.tvStrengthLabel)
+        tilFullName = findViewById(R.id.tilFullName)
         tilEmail = findViewById(R.id.tilEmail)
+        tilPhone = findViewById(R.id.tilPhone)
         tilPassword = findViewById(R.id.tilPassword)
         tilConfirmPassword = findViewById(R.id.tilConfirmPassword)
 
-        setupPasswordStrength()
+        setupInputWatchers()
     }
 
-    private fun setupPasswordStrength() {
+    private fun setupInputWatchers() {
+        val watcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                tilFullName.error = null
+                tilEmail.error = null
+                tilPhone.error = null
+                tilPassword.error = null
+                tilConfirmPassword.error = null
+                tvError.visibility = View.GONE
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        }
+
+        etFullName.addTextChangedListener(watcher)
+        etEmail.addTextChangedListener(watcher)
+        etPhone.addTextChangedListener(watcher)
+        etConfirmPassword.addTextChangedListener(watcher)
+
         etPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                watcher.onTextChanged(s, start, before, count)
                 val password = s?.toString() ?: ""
                 updateStrength(password)
             }
@@ -152,12 +177,40 @@ class RegisterView @JvmOverloads constructor(
             val pass = etPassword.text.toString()
             val confirm = etConfirmPassword.text.toString()
 
+            tilFullName.error = null
             tilEmail.error = null
+            tilPhone.error = null
             tilPassword.error = null
             tilConfirmPassword.error = null
+            tvError.visibility = View.GONE
+
+            if (name.isEmpty()) {
+                tilFullName.error = "Please enter your full name"
+                return@setOnClickListener
+            }
+
+            if (email.isEmpty()) {
+                tilEmail.error = "Please enter your email address"
+                return@setOnClickListener
+            }
 
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 tilEmail.error = "Invalid email format. Please check and try again."
+                return@setOnClickListener
+            }
+
+            if (phone.isNotEmpty() && (!phone.all { it.isDigit() || it == '+' || it == ' ' || it == '-' || it == '(' || it == ')' } || phone.length < 7)) {
+                tilPhone.error = "Please enter a valid phone number."
+                return@setOnClickListener
+            }
+
+            if (pass.isEmpty()) {
+                tilPassword.error = "Please enter a password"
+                return@setOnClickListener
+            }
+
+            if (pass.length < 8) {
+                tilPassword.error = "Password must be at least 8 characters long."
                 return@setOnClickListener
             }
 
@@ -172,7 +225,7 @@ class RegisterView @JvmOverloads constructor(
             }
 
             if (!cbTerms.isChecked) {
-                tvError.text = "Please agree to the Terms of Service."
+                tvError.text = "Please agree to the Terms of Service and Privacy Policy."
                 tvError.visibility = View.VISIBLE
                 return@setOnClickListener
             }
@@ -184,8 +237,12 @@ class RegisterView @JvmOverloads constructor(
                 else -> UserRole.STUDENT
             }
 
-            if (name.isNotEmpty()) {
-                onRegister(name, email, phone, pass, role)
+            onRegister(name, email, phone, pass, role)
+        }
+
+        cbTerms.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                tvError.visibility = View.GONE
             }
         }
 

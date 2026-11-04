@@ -79,4 +79,14 @@
 
     <string name="free_access_banner">100% Free Access For Everyone – No Payments. No Subscriptions.</string>
     <string name="default_web_client_id">153929003258-aspijjer7jf0h0k41o37kcv3ulsvqji3.apps.googleusercontent.com</string>
+    <string name="career_overview">Career Overview</string>
+    <string name="mentorship_overview">Mentorship Overview</string>
+    <string name="recruitment_overview">Recruitment Overview</string>
+    <string name="platform_overview">Platform Overview</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="recent_applications">Recent Applications</string>
+    <string name="recent_candidate_submissions">Recent Candidate Submissions</string>
+    <string name="received_applications">Received Applications</string>
+    <string name="candidates_found">Candidates Found</string>
+    <string name="results_found">Results Found</string>
 </resources>

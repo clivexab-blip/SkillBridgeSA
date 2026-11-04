@@ -2,6 +2,8 @@
 
 SkillBridge SA is a comprehensive Android application designed to bridge the gap between education and employment for South African youth. It provides a tailored experience for students, graduates, mentors, and employers through a professional, Figma-style interface.
 
+> **Note**: I used AI to come out with design and use it to duplicate fragments.
+
 ## 🚀 Tech Stack & Backend (API)
 
 - **UI Framework**: Kotlin + Jetpack Compose (Modern Single-Activity Architecture).

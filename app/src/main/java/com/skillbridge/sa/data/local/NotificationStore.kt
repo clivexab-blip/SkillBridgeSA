@@ -5,29 +5,44 @@ import android.content.Context
 import android.database.Cursor
 import com.skillbridge.sa.data.model.AppNotification
 import com.skillbridge.sa.data.model.NotificationType
+import com.skillbridge.sa.data.notifications.SystemNotificationHelper
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.withContext
 import java.util.UUID
 
-class NotificationStore(context: Context) {
+class NotificationStore(private val context: Context) {
     private val dbHelper = SkillBridgeDbHelper.getInstance(context)
+
+    private val _notificationFlow = MutableSharedFlow<AppNotification>(extraBufferCapacity = 64)
+    val notificationFlow: SharedFlow<AppNotification> = _notificationFlow.asSharedFlow()
 
     suspend fun insert(notification: AppNotification): String = withContext(Dispatchers.IO) {
         val id = notification.notificationId.ifBlank { UUID.randomUUID().toString() }
+        val finalNotification = notification.copy(notificationId = id)
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("notificationId", id)
-            put("userId", notification.userId)
-            put("type", notification.type.name)
-            put("title", notification.title)
-            put("body", notification.body)
-            put("isRead", if (notification.isRead) 1 else 0)
-            put("createdAt", notification.createdAt)
+            put("userId", finalNotification.userId)
+            put("type", finalNotification.type.name)
+            put("title", finalNotification.title)
+            put("body", finalNotification.body)
+            put("isRead", if (finalNotification.isRead) 1 else 0)
+            put("createdAt", finalNotification.createdAt)
         }
         db.insertWithOnConflict(
             SkillBridgeDbHelper.TABLE_NOTIFICATIONS, null, values,
             android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
         )
+
+        // Show system tray notification
+        SystemNotificationHelper.showNotification(context, finalNotification)
+
+        // Broadcast to in-app listeners
+        _notificationFlow.tryEmit(finalNotification)
+
         id
     }
 

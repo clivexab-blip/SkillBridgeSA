@@ -165,14 +165,38 @@ class OpportunityDetailView @JvmOverloads constructor(
                 repo.applications.apply(
                     JobApplication(opportunityId = opp.opportunityId, studentProfileId = profile.userId)
                 )
+                // 1. Notify Applicant
                 repo.notifications.insert(
                     AppNotification(
                         userId = profile.userId,
                         type = NotificationType.APPLICATION_UPDATE,
-                        title = "Application submitted",
+                        title = "Application Submitted",
                         body = "Your application for ${opp.title} at ${opp.company} was submitted."
                     )
                 )
+                // 2. Notify Employer
+                if (opp.postedByUserId.isNotEmpty() && opp.postedByUserId != profile.userId) {
+                    repo.notifications.insert(
+                        AppNotification(
+                            userId = opp.postedByUserId,
+                            type = NotificationType.APPLICATION_UPDATE,
+                            title = "New Job Application",
+                            body = "${profile.fullName} applied for ${opp.title}."
+                        )
+                    )
+                }
+                // 3. Notify Admins
+                val admins = repo.users.getAll().filter { it.role == com.skillbridge.sa.data.model.UserRole.ADMIN }
+                admins.forEach { admin ->
+                    repo.notifications.insert(
+                        AppNotification(
+                            userId = admin.userId,
+                            type = NotificationType.SYSTEM,
+                            title = "New Application Activity",
+                            body = "${profile.fullName} applied for ${opp.title} at ${opp.company}."
+                        )
+                    )
+                }
             }
             applied = true
             updateApplyButton()

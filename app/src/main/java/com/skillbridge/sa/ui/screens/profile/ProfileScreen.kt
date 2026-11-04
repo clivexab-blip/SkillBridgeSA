@@ -1,20 +1,25 @@
 package com.skillbridge.sa.ui.screens.profile
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.os.LocaleListCompat
 import com.google.android.material.chip.ChipGroup
+import com.skillbridge.sa.MainActivity
 import com.skillbridge.sa.R
 import com.skillbridge.sa.data.model.UserProfile
-import com.skillbridge.sa.data.local.SqliteUtils
+import com.skillbridge.sa.utils.LocaleHelper
 
 @Composable
 fun ProfileScreen(
@@ -83,10 +88,11 @@ class ProfileView @JvmOverloads constructor(
         etLocation.setText(profile.location)
         etAvailability.setText(profile.availability)
 
-        when (profile.language) {
-            "en" -> cgLanguages.check(R.id.chipEn)
+        val activeLang = LocaleHelper.getSavedLanguage(context)
+        when (profile.language.ifBlank { activeLang }) {
             "xh" -> cgLanguages.check(R.id.chipXh)
             "zu" -> cgLanguages.check(R.id.chipZu)
+            else -> cgLanguages.check(R.id.chipEn)
         }
 
         btnSave.setOnClickListener {
@@ -94,6 +100,13 @@ class ProfileView @JvmOverloads constructor(
                 R.id.chipXh -> "xh"
                 R.id.chipZu -> "zu"
                 else -> "en"
+            }
+
+            val currentSavedLang = LocaleHelper.getSavedLanguage(context)
+            if (language != currentSavedLang) {
+                LocaleHelper.saveLanguage(context, language)
+                LocaleHelper.applyLanguage(context, language)
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(language))
             }
             
             val updatedExpertise = etExpertise.text.toString().split(",")
@@ -115,6 +128,14 @@ class ProfileView @JvmOverloads constructor(
                     language = language
                 )
             )
+
+            if (language != currentSavedLang) {
+                val intent = Intent(context, MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
+                context.startActivity(intent)
+                (context as? Activity)?.finish()
+            }
         }
 
         btnLogout.setOnClickListener { onLogout() }

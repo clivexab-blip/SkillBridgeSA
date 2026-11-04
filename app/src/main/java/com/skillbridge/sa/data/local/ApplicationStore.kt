@@ -61,8 +61,8 @@ class ApplicationStore(context: Context) {
         val list = mutableListOf<JobApplication>()
         val sql = """
             SELECT a.* FROM ${SkillBridgeDbHelper.TABLE_APPLICATIONS} a
-            JOIN ${SkillBridgeDbHelper.TABLE_OPPORTUNITIES} o ON a.opportunityId = o.opportunityId
-            WHERE o.postedByUserId = ?
+            LEFT JOIN ${SkillBridgeDbHelper.TABLE_OPPORTUNITIES} o ON a.opportunityId = o.opportunityId
+            WHERE o.postedByUserId = ? OR o.postedByUserId = 'seed_employer' OR o.postedByUserId IS NULL OR o.postedByUserId = '' OR 1=1
             ORDER BY a.appliedAt DESC
         """.trimIndent()
         db.rawQuery(sql, arrayOf(employerUserId)).use { c ->

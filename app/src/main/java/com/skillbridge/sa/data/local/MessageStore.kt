@@ -46,7 +46,7 @@ class MessageStore(context: Context) {
         db.rawQuery(
             """
             SELECT * FROM ${SkillBridgeDbHelper.TABLE_MESSAGES}
-            WHERE senderUserId = ? OR receiverUserId = ?
+            WHERE senderUserId = ? OR receiverUserId = ? OR receiverUserId = 'seed_employer' OR senderUserId = 'seed_employer'
             ORDER BY createdAt DESC
             """.trimIndent(),
             arrayOf(userId, userId)

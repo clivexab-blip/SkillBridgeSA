@@ -71,6 +71,17 @@ class NotificationsView @JvmOverloads constructor(
         rvNotifications.adapter = adapter
         
         loadNotifications()
+        observeRealtimeNotifications()
+    }
+
+    private fun observeRealtimeNotifications() {
+        scope.launch {
+            repo.notifications.notificationFlow.collect { note ->
+                if (note.userId == profile.userId || note.userId.isEmpty()) {
+                    loadNotifications()
+                }
+            }
+        }
     }
 
     private fun loadNotifications() {
@@ -85,6 +96,11 @@ class NotificationsView @JvmOverloads constructor(
                 adapter.submitList(notes)
             }
         }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        (scope.coroutineContext[kotlinx.coroutines.Job] as? kotlinx.coroutines.Job)?.cancel()
     }
 
     class NotificationAdapter(private val onNoteClick: (AppNotification) -> Unit) : RecyclerView.Adapter<NotificationViewHolder>() {

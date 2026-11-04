@@ -161,6 +161,9 @@ fun SkillBridgeNavGraph(
                     repo = viewModel.repo(),
                     onOpenProfile = { userId ->
                         navController.navigate(Routes.profileViewRoute(userId))
+                    },
+                    onOpenConversation = { convId, otherUserId ->
+                        navController.navigate(Routes.conversationRoute(convId, otherUserId))
                     }
                 )
             }
@@ -223,7 +226,12 @@ fun SkillBridgeNavGraph(
                     }
                 )
             }
-            composable(Routes.SETTINGS) { SettingsScreen() }
+            composable(Routes.SETTINGS) {
+                SettingsScreen(
+                    profile = profile,
+                    onUpdateProfile = { viewModel.updateProfile(it) }
+                )
+            }
             composable(Routes.LEARNING_CENTRE) { LearningCentreScreen(repo = viewModel.repo()) }
             composable(Routes.MENTORSHIP) {
                 val p = profile ?: return@composable
