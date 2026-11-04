@@ -4,6 +4,23 @@ SkillBridge SA is a comprehensive Android application designed to bridge the gap
 
 > **Note**: I used AI to come out with design and use it to duplicate fragments.
 
+---
+
+## 🎨 AI-Assisted Design System & Fragment Duplication
+
+To achieve a polished, cohesive "Figma-style" professional interface across all user roles and screens, AI was leveraged extensively throughout the UI architecture:
+
+1. **Design System Conceptualization**:
+   - AI helped define the professional South African youth career color palette (`sb_green` emerald primary, `sb_navy` deep blue, `sb_gold` accent, and `sb_bg` neutral light background).
+   - Established consistent typographic hierarchy and card elevation standards (`1dp`-`2dp` elevation with `12dp`-`16dp` corner radii).
+
+2. **Modular Fragment & Layout Duplication**:
+   - AI guided the creation of highly reusable, modular XML layout templates (such as `layout_setting_row.xml`, `layout_stat_chip.xml`, `layout_quick_action_card.xml`, `item_application.xml`, `item_user.xml`, and `item_notification.xml`).
+   - These structural fragments were systematically duplicated and customized across multiple feature screens (Dashboard, Explore, Applications, Mentorship, Messages, and Profile) ensuring uniform padding, margin spacing, and responsive layout behavior without duplicating boilerplate code.
+
+3. **Jetpack Compose Interoperability**:
+   - By wrapping these duplicated XML layouts and fragments inside Compose `AndroidView` components, the app maintains the declarative navigation structure of Jetpack Compose while harnessing the pixel-perfect layout precision of traditional Android XML views.
+
 ## 🚀 Tech Stack & Backend (API)
 
 - **UI Framework**: Kotlin + Jetpack Compose (Modern Single-Activity Architecture).
