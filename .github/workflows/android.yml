@@ -28,9 +28,9 @@ jobs:
 
     - name: Generate Gradle Wrapper
       run: |
-        wget -q https://services.gradle.org/distributions/gradle-8.5-bin.zip
-        unzip -q gradle-8.5-bin.zip
-        export PATH=$PWD/gradle-8.5/bin:$PATH
+        wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip
+        unzip -q gradle-8.7-bin.zip
+        export PATH=$PWD/gradle-8.7/bin:$PATH
         gradle wrapper
 
     - name: Grant execute permission for gradlew
